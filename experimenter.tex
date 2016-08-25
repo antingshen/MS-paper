@@ -1,27 +1,56 @@
 
-Motivation/Intro
+During our investigation, we had many frustrating experiences with existing research tools in this area.
+These included installation issues, configuration issues, and dealing with unintuitive and undocumented interfaces.
+For example, there are dozens of open issues without solutions on the VATIC GitHub, 
+and its installation script fails at multiple points on a brand new Ubuntu box. 
+Due to preciousness of researcher's time,
+we believe the ability for researchers to test and iterate quickly is just as important as worker speeds when it comes to video annotation.
+Therefore we have placed improving the experimenter's experience as one of the main goals of this work.
 
 \section{Interface for researcher}
 
-Deployment script
+For a basic user creating a crowdsourced video dataset using the default configurations we used, 
+BeaverDam provides a streamlined interface.
+We provide a setup script that is tested on clean installs of Ubuntu 14.04 and Ubuntu 16.04.
+In comparison, VATIC was tested on an unspecified Ubuntu installation with exact Apache and MySQL installs,
+and while the install script claims that it should work on any operating system in theory, 
+installation is difficult in reality. 
+Additionally, our install script configures everything from Nginx and TLS to database config and backups.
+The user only needs to place their keys and credentials in the locations specified in our documentation.
+While a containerization system such as Docker would have also solved VATIC's issues and ensure future compatibility,
+we felt that the additional complexity is not worth it, as many of our users in the research community are unfamiliar with Docker. 
 
-Web based admin interface instead of command line, verification
+To use BeaverDam after installation, we provide a web interface for researchers to easily add and view videos and jobs.
+We feel that this is superior to VATIC's command line based approach, 
+as the number of flags needed to specify various configurations was overwhelming. 
+However, to allow experimenters to load large number of videos or perform other tasks programatically, 
+BeaverDam also provides a Python shell interface, backed by Django, to expose every functionality through Python.
 
-Availability of highly flexible Python based shell
-
-Video extraction after annotation (exception of H264)
+Lastly, as BeaverDam is HTML5 video based, no frame extraction step is necessary.
+H.264 encoded videos will work without preprocessing.
+However, we do provide scripts to convert these videos to images with matching annotations to feed into machine learning tools if desired.
 
 \section{Decoupled modules}
 
-Comparison with microservice
+As the users of BeaverDam will most likely need to modify BeaverDam to fit their needs,
+we've emphasized modularity in our designs. 
+Since modularity is something VATIC did well with their turkic, vatic, and pyvision splits, 
+we've taken a similar approach. 
+Our infrastructure is split between a crowdsourcing module, an annotation module, and a CV-based tracking module. 
+But we decided to go a step further and make other parts of our platform replaceable as well.
 
-Serving videos
+To serve videos, we've provided Nginx to allow VATIC users to continue serving videos efficiently on the same server as their application.
+But to allow for scalability, users can use AWS S3 or any other CDN, or even a mix, by specifying so when creating jobs.
+Similarly, our setup pipeline is done through Ansible, a configuration management tool popular in industry. 
+This allows users to deploy on their own servers, or in the cloud.
 
-Hosting annotator (ansible)
-
-Crowdsourcing platform independence
-
-Tracking module
+We also understand that not everyone wants to use Amazon Mechanical Turk. 
+While past research has proven Mturk to be efficient and reliable, 
+companies in industry seeking training data may prefer alternatives such as CrowdFlower, 
+or may even choose to label in-house, or outsource to contractors.
+BeaverDam is designed with this flexibility in mind as it carries its own authentication and works independently of Mturk.
+This allows companies with the resources to seek cheaper labor in other countries to use BeaverDam as a platform for their workers
+and track progress and pay without the need for Amazon Mechanical Turk, which carries a 20\% fee. 
 
 \section{Patterns}
 
