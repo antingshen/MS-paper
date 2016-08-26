@@ -54,9 +54,11 @@ and track progress and pay without the need for Amazon Mechanical Turk, which ca
 
 \section{Patterns}
 
-Django backend
-
-Patterned frontend (MVC, event-based)
+To facilitate modification of our code, we adopted the Django framework because it sets fairly strict conventions on how a project is structured. 
+Someone familiar with Django will immediate know where to find the files responsible for each function of the backend.
+As there is a fair bit of frontend logic to video annotation, we've organized the code responsible according to well defined patterns as well. 
+Under Our Pattern Language ~\cite{opl}, the frontend follows the Model-View-Controller structure, and each of the three components is event-based. 
+While using events to communicate within an application may seem like additional complexity at first, but it enables decoupling and extends the existing events from user interaction.
 
 \section{Dependencies}
 
