@@ -62,11 +62,29 @@ While using events to communicate within an application may seem like additional
 
 \section{Dependencies}
 
-Few dependencies (sqlite)
+The number one problem we encountered during our installations of VATIC was broken dependencies. 
+Its GitHub issues point to problems users are having due to MySQL, cython, ipinfodb, and gcc versioning.
+BeaverDam addresses this problem in two ways. 
+First, we greatly reduce the number of dependencies.
+Python 3 and two python packages installed through pip are the only dependencies required to run BeaverDam.
+Three other dependencies, Nginx, supervisor, and uwsgi, are recommended for efficient deployment.
+And to avoid the burdensome installation and configuration of a database that VATIC required, we use sqlite3, which is a Python standard library. 
+In this case, it proves to be enough to handle even a fairly large amount of annotations, and can be swapped out easily if needed.
+Second, we version each dependency. 
+This ensures that newer versions of dependencies in the future cannot break compatibility. 
+For front-end libraries, we check-in the required files directly instead of using a package manager, avoiding extra complexity.
 
-Easily restore state
+Another problem we encountered with VATIC's dependencies was that since they are installed and configured system-wide, 
+different users sharing a server would often leave bad state for others, causing hard-to-track bugs.
+We attempt to solve this by including an idempotent script that verifies all required state, and fixing them if necessary.
+Additionally, our system is designed to be quickly set up on new VM instances, 
+so one can perform upgrades and fixes by discarding the entire server VM and starting from scratch.
 
-Uses newer technologies
+When choosing our dependencies, we strived to use the latest versions of mature technologies.
+We use Python 3.5 and Django 1.10, the latest versions available at the time.
+We also use the ES6 version of JavaScript, which includes many features to enhance readability and programmer happiness.
+While alternatives such as TypeScript provides additional features, ES6 is supported without a transpiler and avoids complexity.
+Browser compatibility of ES6 was a small issue with workers, but we expect this to improve as browsers fully adopt the standard and workers update to the latest version of their browsers. 
 
 \section{Security}
 
