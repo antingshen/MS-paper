@@ -88,10 +88,17 @@ Browser compatibility of ES6 was a small issue with workers, but we expect this 
 
 \section{Security}
 
-DB Backup
+As BeaverDam aims to be industry quality software instead of research quality, security considerations are important.
+While one would not expect malicious users, it's important to follow security best practices as a preventative measure. 
+Furthermore, having a full set of security tools allows the app to perform its own authentication, 
+adding to modularity by allowing it to function as a standalone app without Mechanical Turk, unlike VATIC.
 
-Authentication enables decoupling, web admin
-
-Other standard procedures, HTTPS \& HSTS, CSRF, clickjacking
+The first and best line of defense is regular backups.
+To back up data and configuration in VATIC, one had to perform a MySQL database dump and ensure all config files around the server are duplicated.
+In BeaverDam, configuration is checked into version control, and the database is in a single file for easy backup and restore thanks to Sqlite.
+Our setup tool automatically sets a daily backup to Amazon S3 if the app is configured with access keys. 
+We also implemented other critical security features, such as TLS, HSTS, CSRF protection, and clickjacking protection. 
+These features are automatically installed and activated by our setup script, 
+with the user only needing to provide TLS certificates for their domain. \footnote{We recommend \textbf{letsencrypt} for easy and free TLS certificates.} 
 
 
