@@ -2,6 +2,14 @@ Deep learning applications in recent years have come to require rapidly growing 
 Often, accuracies can be boosted by adding data as much as by spending years on algorithmic development.
 For example, on the VOC07 benchmark, Faster-RCNN~\cite{FasterRCNN} with VGG-16 was able to eliminate 27.5\% of errors in the much older R-CNN~\cite{RCNN} backed by an equally old neural network architecture (mAP improved from 58.5 to 69.9). 
 However, simply by including additional data from VOC12 and COCO, 29.5\% of the remaining error was eliminated (mAP improved from 69.9 to 78.8). 
+
+\begin{figure}[h]
+\includegraphics[width=14cm]{figs/data_vs_error.png}
+\centering
+\caption{Improvement of error as data increases, compared to error improvements due to algorithm improvements. 
+In this case, data and algorithm both contribute significantly to error reduction.}
+\end{figure}
+
 Therefore, for real-world application development, data can be cheaper and more effective than scientists. 
 While many existing tools support image classification -- it is even built into Amazon Mechanical Turk (MTurk) -- and some tools support bounding box labeling in images, few tools exist for frame-by-frame labeling in videos. 
 VATIC~\cite{Vatic} stands out as being one of the best, as not only does it make high quality annotations one of its main goals, but also cost and scalability. 
@@ -21,3 +29,5 @@ Static image annotators
 Vatic, LabelMe, etc
 
 Things other people cite
+
+KITTI, Berkeley group, samasource
