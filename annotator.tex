@@ -29,7 +29,7 @@ We find this to be a good rule of thumb when we dont have enough users to proper
 
 First, we set the user in create/edit hybrid mode by default.
 A new object is created if the user drags in an empty spot, and an existing object is edited otherwise.
-VATIC requires the user to click a "create" button, which enables the user to annotate heavily overlapped objects more easily.
+VATIC requires the user to click a ``create'' button, which enables the user to annotate heavily overlapped objects more easily.
 We propose that it's more efficient to force a user to perform the extra steps of creating a box in an empty spot and dragging it onto the object in case of overlap,
 as heavy overlaps turned out to be rare in our datasets, so it was better to optimize for the common case.
 
@@ -45,9 +45,13 @@ However, we find in our small sample of annotators that tablet users are few and
 
 \section{Handling frame exit/enters}
 
-Border padding
-
-Allow out-of-border boxes
+During our user tests, we found that users have the most difficulty when objects are entering or exiting the frame, as it's difficult for linear interpolation to handle a box whose size is increasing but one edge is fixed to the edge of the frame. 
+This was one of the main challenges when annotating using VATIC, as we had many driving videos where objects frequently entered and exited.
+To address this issue, we introduced two solutions.
+First, we allow boxes to be partially or wholly located outside the frame. 
+This enables the user to guess at the true location of the object if the frame were bigger, which allows for much better linear interpolation <INSERT EXAMPLE>
+Then, we add a large padding around the border of the frame, essentially enlarging the frame with blank space, which makes drawing and editing boxes that are located partially outside the frame much easier. 
+After labeling, any boxes that are partially outside the frame can be cropped to the edge of the frame.
 
 \section{Micro vs Macro tasks}
 
