@@ -8,6 +8,14 @@ and introduce several new ones to address issues found during the testing of VAT
 
 \section{Keyframe scheduling \& Multiple object annotation}
 
+A big decision for a keyframe-based video annotation tool is whether the worker or the tool chooses the keyframe schedule. 
+From past user studies, we know that human workers don't always choose the best keyframes, leading to inefficiencies. 
+In fact, VATIC showed that by switching to a fixed keyframe schedule, workers were able to label faster.
+However, in our studies we found it to not always be the case. 
+Since our videos contain a varied mix of stationary objects, slow \& linearly moving objects, and fast objects with irregular motion, it makes sense to use fewer keyframes for easier objects. 
+While a flexible keyframe schedule could potentially be automated using tracking, we instead optimized the interface for user created keyframes.
+
+
 Keyframe viewer when on custom schedule
 
 \section{Video playback for maintaining identity}
@@ -18,14 +26,14 @@ As we wanted more flexibility and power for more advanced labelers, we incorpora
 One huge issue we solved with this setup was video loading times.
 When deploying VATIC, we found users complaining about load times, and sometimes jobs would time out before the video loaded, especially when using high resolution images for frames.
 When seeking in the video, the images would flash to white if it's not loaded from cache quickly enough.
-By converting the app to use HTML5 video, we take advantage of its ability to stream, similar to YouTube and otger sites can display the video without loading all of it.
+By converting the app to use HTML5 video, we take advantage of its ability to stream, similar to YouTube and other sites can display the video without loading all of it.
 The annotator can then begin annotating as the video loads.
 The playback is also much smoother, with a minor tradeoff of slightly slower rewinds, as videos are encoded in a way optimized for forward playback.
 
 \section{Reducing clicks}
 
 In addition to measuring time it takes for annotators to perform certain actions, we sought to minimize the number of clicks necessary.
-We find this to be a good rule of thumb when we dont have enough users to properly A/B test design choices.
+We find this to be a good rule of thumb when we don't have enough users to properly A/B test design choices.
 
 First, we set the user in create/edit hybrid mode by default.
 A new object is created if the user drags in an empty spot, and an existing object is edited otherwise.
