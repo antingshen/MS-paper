@@ -6,7 +6,7 @@ During the development and deployment of BeaverDam, we've gathered extensive fee
 We also implemented features suggested by past works such as VATIC,
 and introduce several new ones to address issues found during the testing of VATIC.
 
-\section{Keyframe scheduling \& Multiple object annotation}
+\section{Keyframe scheduling}
 
 A big decision for a keyframe-based video annotation tool is whether the worker or the tool chooses the keyframe schedule. 
 From past user studies, we know that human workers don't always choose the best keyframes, leading to inefficiencies. 
@@ -15,8 +15,9 @@ However, in our studies we found it to not always be the case.
 Since our videos contain a varied mix of stationary objects, slow \& linearly moving objects, and fast objects with irregular motion, it makes sense to use fewer keyframes for easier objects. 
 While a flexible keyframe schedule could potentially be automated using tracking, we instead optimized the interface for user created keyframes.
 
-
-Keyframe viewer when on custom schedule
+We added a keyframe viewer bar <TODO: INSERT FIGURE> that displays all keyframes and keyframes for the currently selected object. 
+The user can click on these keyframes to edit them, or insert new keyframes by editing the boxes when on a frame that's not a keyframe.
+We also included keyboard shortcuts to jump between keyframes for experts who need fine grained editing.
 
 \section{Video playback for maintaining identity}
 
@@ -62,6 +63,11 @@ Then, we add a large padding around the border of the frame, essentially enlargi
 After labeling, any boxes that are partially outside the frame can be cropped to the edge of the frame.
 
 \section{Micro vs Macro tasks}
+
+The topic of whether to divide up work to give each worker a small task to be completed in less than a minute (micro task) has been well discussed in literature. 
+In ImageNet and other image classification \& detection datasets, micro tasks were preferred as they provided the workers more predictable task completion times and reward schedules. 
+They are also easier for quality control as gold standard tasks where the label in known can be dispersed among the tasks. 
+However, the authors of VATIC 
 
 Comparison from existing literature
 
