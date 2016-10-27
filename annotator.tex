@@ -8,14 +8,14 @@ and introduce several new ones to address issues found during the testing of VAT
 
 \section{Keyframe scheduling}
 
-A big decision for a keyframe-based video annotation tool is whether the worker or the tool chooses the keyframe schedule. 
-From past user studies, we know that human workers don't always choose the best keyframes, leading to inefficiencies. 
+A big decision for a keyframe-based video annotation tool is whether the worker or the tool chooses the keyframe schedule.
+From past user studies, we know that human workers don't always choose the best keyframes, leading to inefficiencies.
 In fact, VATIC showed that by switching to a fixed keyframe schedule, workers were able to label faster.
-However, in our studies we found it to not always be the case. 
-Since our videos contain a varied mix of stationary objects, slow \& linearly moving objects, and fast objects with irregular motion, it makes sense to use fewer keyframes for easier objects. 
+However, in our studies we found it to not always be the case.
+Since our videos contain a varied mix of stationary objects, slow \& linearly moving objects, and fast objects with irregular motion, it makes sense to use fewer keyframes for easier objects.
 While a flexible keyframe schedule could potentially be automated using tracking, we instead optimized the interface for user created keyframes.
 
-We added a keyframe viewer bar <TODO: INSERT FIGURE> that displays all keyframes and keyframes for the currently selected object. 
+We added a keyframe viewer bar <TODO: INSERT FIGURE> that displays all keyframes and keyframes for the currently selected object.
 The user can click on these keyframes to edit them, or insert new keyframes by editing the boxes when on a frame that's not a keyframe.
 We also included keyboard shortcuts to jump between keyframes for experts who need fine grained editing.
 
@@ -46,7 +46,7 @@ Additionally, instead of having the user choose the type of object each time, we
 This reduced clicks, but did result in more errors for new users who didn't notice that they must change the label from the default when labeling non-cars.
 While VATIC's prompting each time prevented this, we elected to solve it through a better tutorial to save time for trained annotators.
 
-Finally, BeaverDam includes extensive keyboard shortcuts, with the aim of eliminating any need for the mouse aside from drawing and moving boxes. 
+Finally, BeaverDam includes extensive keyboard shortcuts, with the aim of eliminating any need for the mouse aside from drawing and moving boxes.
 Tasks such as label selections and video playback are all controlled through the keyboard.
 We left in optional mouse controls, but it may be a good choice to remove them to enforce keyboard shortcut usage.
 Surprisingly, we have had turkers report that they were on tablets, and keyboard shortcuts were inefficient for them.
@@ -54,25 +54,28 @@ However, we find in our small sample of annotators that tablet users are few and
 
 \section{Handling frame exit/enters}
 
-During our user tests, we found that users have the most difficulty when objects are entering or exiting the frame, as it's difficult for linear interpolation to handle a box whose size is increasing but one edge is fixed to the edge of the frame. 
+During our user tests, we found that users have the most difficulty when objects are entering or exiting the frame, as it's difficult for linear interpolation to handle a box whose size is increasing but one edge is fixed to the edge of the frame.
 This was one of the main challenges when annotating using VATIC, as we had many driving videos where objects frequently entered and exited.
 To address this issue, we introduced two solutions.
-First, we allow boxes to be partially or wholly located outside the frame. 
+First, we allow boxes to be partially or wholly located outside the frame.
 This enables the user to guess at the true location of the object if the frame were bigger, which allows for much better linear interpolation <INSERT EXAMPLE>
-Then, we add a large padding around the border of the frame, essentially enlarging the frame with blank space, which makes drawing and editing boxes that are located partially outside the frame much easier. 
+Then, we add a large padding around the border of the frame, essentially enlarging the frame with blank space, which makes drawing and editing boxes that are located partially outside the frame much easier.
 After labeling, any boxes that are partially outside the frame can be cropped to the edge of the frame.
 
-\section{Micro vs Macro tasks}
+% \section{Micro vs Macro tasks}
 
-The topic of whether to divide up work to give each worker a small task to be completed in less than a minute (micro task) has been well discussed in literature. 
-In ImageNet and other image classification \& detection datasets, micro tasks were preferred as they provided the workers more predictable task completion times and reward schedules. 
-They are also easier for quality control as gold standard tasks where the label in known can be dispersed among the tasks. 
-However, the authors of VATIC 
+% The topic of whether to divide up work to give each worker a small task to be completed in less than a minute (micro task) has been well discussed in literature.
+% In ImageNet and other image classification \& detection datasets, micro tasks were preferred as they provided the workers more predictable task completion times and reward schedules.
+% They are also easier for quality control as gold standard tasks where the label in known can be dispersed among the tasks.
+% However, the authors of VATIC found through their experiments that macro tasks were better for video annotation, as errors from earlier tasks propagated throughout the rest of the video.
+% We compared these two competing philosophies of expert annotators completing large tasks vs using many independent small tasks.
 
-Comparison from existing literature
 
-Proposal advocating for micro-tasks in video labeling
 
-Extensible task structure
+% Comparison from existing literature
 
-\section{Interpolation \& Tracking}
+% Proposal advocating for micro-tasks in video labeling
+
+% Extensible task structure
+
+% \section{Interpolation \& Tracking}
