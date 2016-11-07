@@ -52,6 +52,12 @@ BeaverDam is designed with this flexibility in mind as it carries its own authen
 This allows companies with the resources to seek cheaper labor in other countries to use BeaverDam as a platform for their workers
 and track progress and pay without the need for Amazon Mechanical Turk, which carries a 20\% fee.
 
+\begin{figure}[h]
+\includegraphics[width=14cm]{figs/backend.png}
+\centering
+\caption{BeaverDam's backend server logic. The annotation app is sent in (3). Workers can either be hired through a crowdsourcing platform (1), or hired in-house and use BeaverDam directly (2). The web proxy (4) smoothly handles many requests and forwards static files, and performs HTTPS authentication with HSTS to meet Mturk security requirements. A video server or cloud provider CDN (5) is used to reduce worker download waiting times, a problem of other video labeling tools.}
+\end{figure}
+
 \section{Patterns}
 
 To facilitate modification of our code, we adopted the Django framework because it sets fairly strict conventions on how a project is structured.

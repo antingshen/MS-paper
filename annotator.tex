@@ -1,8 +1,15 @@
+\begin{figure}[h]
+\includegraphics[width=15cm]{figs/interface.png}
+\label{interface}
+\centering
+\caption{BeaverDam's expert verification interface with user keyframe scheduling enabled, border buffer disabled. The workers see a similar interface. Note the keyframe scheduling interface integrated with the video player, the single click multiple create interface, and objects being allowed to partially or wholly off-screen in the bottom left corner.}
+\end{figure}
 
 The productivity of annotators is the focus of most of the prior works in this area.
 During the development and deployment of BeaverDam, we've gathered extensive feedback from our turkers and testers.
 We also implemented features suggested by past works such as VATIC,
-and introduce several new ones to address issues found during the testing of VATIC.
+and introduce several new ones to address issues found during the testing of VATIC.\footnote{Sceenshots of select issues in this chapter are taken from the demo video on VATIC's website, and are representative of what we encountered.}
+
 
 \section{Keyframe scheduling}
 
@@ -13,7 +20,7 @@ However, in our studies we found it to not always be the case.
 Since our videos contain a varied mix of stationary objects, slow \& linearly moving objects, and fast objects with irregular motion, it makes sense to use fewer keyframes for easier objects.
 While a flexible keyframe schedule could potentially be automated using tracking, we instead optimized the interface for user created keyframes.
 
-We added a keyframe viewer bar <TODO: INSERT FIGURE> that displays all keyframes and keyframes for the currently selected object.
+We added a keyframe viewer bar that displays all keyframes and keyframes for the currently selected object.
 The user can click on these keyframes to edit them, or insert new keyframes by editing the boxes when on a frame that's not a keyframe.
 We also included keyboard shortcuts to jump between keyframes for experts who need fine grained editing.
 
@@ -40,6 +47,12 @@ VATIC requires the user to click a ``create'' button, which enables the user to 
 We propose that it's more efficient to force a user to perform the extra steps of creating a box in an empty spot and dragging it onto the object in case of overlap,
 as heavy overlaps turned out to be rare in our datasets, so it was better to optimize for the common case.
 
+\begin{figure}[h]
+\includegraphics[width=14cm]{figs/vatic_create.png}
+\centering
+\caption{Explicit object creation in VATIC. BeaverDam guesses whether the worker wants to create a new object or edit an existing one by where they click, which is efficient in the general case. We also eliminate this additional prompt of asking for the object type and assume the type is same as the last created type by default.}
+\end{figure}
+
 Additionally, instead of having the user choose the type of object each time, we default to the most common label (car) or the user's last selection.
 This reduced clicks, but did result in more errors for new users who didn't notice that they must change the label from the default when labeling non-cars.
 While VATIC's prompting each time prevented this, we elected to solve it through a better tutorial to save time for trained annotators.
@@ -53,12 +66,20 @@ However, we find in our small sample of annotators that tablet users are few and
 \section{Handling frame exit/enters}
 
 During our user tests, we found that users have the most difficulty when objects are entering or exiting the frame, as it's difficult for linear interpolation to handle a box whose size is increasing but one edge is fixed to the edge of the frame.
+
+\begin{figure}[h]
+\includegraphics[width=14cm]{figs/vatic_border.png}
+\centering
+\caption{VATIC annotation of object entering frame. Note the user must draw the box exactly to the edge of the screen as shown here, as drawing fails otherwise. BeaverDam allows the user's mouse to draw to outside the frame, cropping back to the frame edge in post processing.}
+\end{figure}
+
 This was one of the main challenges when annotating using VATIC, as we had many driving videos where objects frequently entered and exited.
 To address this issue, we introduced two solutions.
 First, we allow boxes to be partially or wholly located outside the frame.
-This enables the user to guess at the true location of the object if the frame were bigger, which allows for much better linear interpolation <INSERT EXAMPLE>
+This enables the user to guess at the true location of the object if the frame were bigger, which allows for much better linear interpolation. % TODO: EXAMPLE OF THIS
 Then, we add a large padding around the border of the frame, essentially enlarging the frame with blank space, which makes drawing and editing boxes that are located partially outside the frame much easier.
 After labeling, any boxes that are partially outside the frame can be cropped to the edge of the frame.
+
 
 % \section{Micro vs Macro tasks}
 
@@ -77,3 +98,4 @@ After labeling, any boxes that are partially outside the frame can be cropped to
 % Extensible task structure
 
 % \section{Interpolation \& Tracking}
+
