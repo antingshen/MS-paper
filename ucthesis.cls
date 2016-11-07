@@ -10,7 +10,7 @@
 %%%     filename        = "ucthesis.cls",
 %%%     version         = "4.0",
 %%%     date            = "1 September 2004",
-%%% originally 
+%%% originally
 %%% portedby    = "Blaise B. Frederick",
 %%% address     = "Center for Functional Imaging
 %%%            Lawrence Berkeley Laboratory
@@ -27,11 +27,11 @@
 %%%                        class, which is intended to meet the requirements
 %%%                        for University of California Ph.D. dissertations.
 %%%            It is a direct port to LaTeX2e from UCTHESIS
-%%%            v2.7 by Ethan V. Munson, with no changes other 
+%%%            v2.7 by Ethan V. Munson, with no changes other
 %%%            than those for compatibility.  The major modifictions
 %%%            are in the font selection commands in the option
 %%%            files uct1x.clo.
-%%%            
+%%%
 %%%            UCTHESIS.STY v2.7 is based on the standard
 %%%            report.sty as modified by Mittelbach and Schopf in
 %%%            Jan 1992.  The primary differences are (1) the use
@@ -47,15 +47,15 @@
 %%%                        that arise with it.
 %%%
 %%%            Version 2.x fixes a bug in the previous
-%%%            version of 20 Jun 1988.  The bug was that 
+%%%            version of 20 Jun 1988.  The bug was that
 %%%            "draft" optional mode didn't work because of
 %%%            problems in handling optional arguments.
-%%%                        This file does not seem to work with earlier 
+%%%                        This file does not seem to work with earlier
 %%%                        versions of LaTeX (pre-Jan 1992).
 %%%
-%%%            Version 2.3 includes a single-spaced 
+%%%            Version 2.3 includes a single-spaced
 %%%            tabular* environment.
-%%%         
+%%%
 %%%            Version 2.4 sets \evensidemargin correctly
 %%%            for two-sided style.  It also adds new
 %%%            environments (\smalltabular and
@@ -78,18 +78,18 @@
 %%%
 %%%            Version 3.0 is a direct port of version 2.7
 %%%            to LaTeX2e.  The major revisions in ucthesis.cls
-%%%            are converting option processing to LaTeX2e 
+%%%            are converting option processing to LaTeX2e
 %%%            conventions.  The uct1x files have been revised
 %%%            to use the new font selection commands.
 %%%
-%%%            Some users have had problems with the 
+%%%            Some users have had problems with the
 %%%            margins ending up too small on one side.
 %%%            This appears to be a DVI-to-PostScript
 %%%            driver or printer-adjustment problem.
 %%%            If you have such trouble, make small adjustments
 %%%            to the \textwidth and \oddsidemargin
 %%%            settings in your document preamble.
-%%%            
+%%%
 %%%            Another problem some people have had is
 %%%            that you can't use \pagestyle{headings}
 %%%            and \markboth if you use \part.  The solution
@@ -98,7 +98,7 @@
 %%%
 %%%     Changes to version 4.0
 %%%           Modified significantly to conform with 2003 UCB requirements
-%%%           Changes include title page modifications, 
+%%%           Changes include title page modifications,
 %%%           a new approval page,
 %%%           the use of the "optionalfrontmatter" environment for clarity,
 %%%           and the proper handling of page numbers throughout.
@@ -124,7 +124,7 @@
 \DeclareOption{12pt}{\renewcommand\@ptsize{2}}
 \DeclareOption{oneside}{\@twosidefalse \@mparswitchfalse}
 \DeclareOption{twoside}{\@twosidetrue  \@mparswitchtrue}
-% There are three different modes: final, draft, and comment 
+% There are three different modes: final, draft, and comment
 % They are all defined near the end of this document
 \DeclareOption{draft}{\renewcommand\@draftmark{1}}
 \DeclareOption{final}{\renewcommand\@draftmark{0}}
@@ -155,7 +155,7 @@
 % version.  To break this dependency, I have made \ds@draft set a marker
 % which is later tested to determine whether to actually do the draft
 % mode actions.
-% 
+%
 % Ethan Munson (October 16, 1992)
 
 % FMi 91/03/30: made twocolum.sty a file and twocolumn an option.
@@ -166,7 +166,7 @@
 
 % The \ProcessOptions command causes the execution of every option command
 % FOO which is declared and for which the user typed the FOO option in his
-% \documentclass.  For every undeclared option BAR there will be a warning 
+% \documentclass.  For every undeclared option BAR there will be a warning
 % message. (BBF 10/31/94)
 
 \ProcessOptions
@@ -257,7 +257,7 @@
 % DECLARATIONS
 %
 % These macros are used to declare arguments needed for the
-% construction of the front matter.  
+% construction of the front matter.
 
 % The month the degree will be officially conferred
 \def\degreemonth#1{\gdef\@degreemonth{#1}}
@@ -311,7 +311,7 @@
 
 % \alwayssingle and \endalwayssingle
 %
-% These macros define an environment for front matter that is always 
+% These macros define an environment for front matter that is always
 % single column even in a double-column document.
 
 \def\alwayssingle{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
@@ -320,7 +320,7 @@
 \def\endalwayssingle{\if@restonecol\twocolumn \else \newpage \fi}
 
 % \maketitle outputs the complete titlepage.  It requires all the
-% above macros except \campuscap.  It is probably not correct for 
+% above macros except \campuscap.  It is probably not correct for
 % joint (e.g. UCSD/SDSU) degrees.
 
 % Set the font that will be used in the front matter headings
@@ -347,22 +347,22 @@ by
 
 \vspace{12pt}
 
- {\@author} 
- 
+ {\@author}
+
 \vspace{6pt}
 
-{\@prevdegrees} 
+{\@prevdegrees}
 
 \vspace{24pt}
 
-A thesis submitted in partial satisfaction \\
-of the requirements for the degree of
+A project report submitted in partial satisfaction \\
+of the Plan II requirements for the degree of
 
 %thesis -> dissertation...
 
 \vspace{12pt}
 
-{\@degree} 
+{\@degree}
 
 in
 
@@ -392,9 +392,9 @@ Committee in charge:
 
 \vspace{12pt}
 
-{\@chair}, Chair\\
+{\@chair}, Research Advisor\\
 
-{\@othermemberA}\\
+{\@othermemberA}, Second Reader\\
 
 %{\@othermemberB}\\
 
@@ -423,7 +423,7 @@ Committee in charge:
 % APPROVALPAGE
 %
 % The \approvalpage macro emits a UC-approved approval page ready for
-% your committee's signature.  It is not an automatic part of the 
+% your committee's signature.  It is not an automatic part of the
 % output because there's really no point in printing it until you are
 % ready to get signatures.  It requires the the \year, \author, and
 % \campus macros have been defined.  It uses lots of tricky spacing
@@ -435,32 +435,32 @@ Committee in charge:
 \setcounter{page}{2}
 \null\vfill
 \begin{center}
-\fmfont The thesis of {\@author} is approved. \\
+\fmfont The project report of {\@author} is approved. \\
 \end{center}
 \vspace{.25in}
 \begin{center}
 
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rr} 
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}
    \vspace{\@approvalspace}\\
    \hline
-    \hspace*{.1in}Chair & Date \hspace*{.35in}\\
+    \hspace*{.1in}Research Advisor & Date \hspace*{.35in}\\
    \vspace{\@approvalspace}\\
 \hline
-     & Date \hspace*{.35in}\\
+    \hspace*{.1in}Second Reader & Date \hspace*{.35in}\\
 %   \vspace{\@approvalspace}\\
 %\hline
 %     & Date \hspace*{.35in}\\
-\ifnum \@numberofmembers > 3   
+\ifnum \@numberofmembers > 3
    \vspace{\@approvalspace}\\
 \hline
      & Date \hspace*{.35in}\\
 \fi
-\ifnum \@numberofmembers > 4  
+\ifnum \@numberofmembers > 4
    \vspace{\@approvalspace}\\
 \hline
      & Date \hspace*{.35in}\\
 \fi
-\ifnum \@numberofmembers > 5   
+\ifnum \@numberofmembers > 5
    \vspace{\@approvalspace}\\
 \hline
      & Date \hspace*{.35in}\\
@@ -486,7 +486,7 @@ University of California, {\@campus}\\
 \begin{alwayssingle}
 \thispagestyle{empty}
 \begin{center}
-\vspace*{\fill} 
+\vspace*{\fill}
 {\fmfont
 {\@title}\par
 \vspace{1in}
@@ -496,7 +496,7 @@ by\par
 \vspace{.1in}
 \@author
 }
-\vspace*{\fill} 
+\vspace*{\fill}
 \end{center}
 \end{alwayssingle}}
 
@@ -527,13 +527,13 @@ by\par
 \vspace{.1in}
 University of California, {\@campus}\par
 %\vspace{.1in}
-{\@chair}, Chair
+{\@chair}, Research Advisor
 }\vspace{.1in}
 \end{center}}
 
 \def\endabstract{\par\vfil\null\end{alwayssingle}
 }
- 
+
 \def\abstractsignature{
 \hspace*{\fill}
 \begin{minipage}[t]{3.25in}
@@ -541,7 +541,7 @@ University of California, {\@campus}\par
 \vspace{1.7cm}
 \rule{3.2in}{.5pt}\\
 \@chair\\
-Thesis Committee Chair
+Research Advisor
 \end{minipage}}
 
 
@@ -571,7 +571,7 @@ Thesis Committee Chair
 
 % ACKNOWLEDGEMENTS
 %
-% The acknowledgements environment puts a large, bold, centered 
+% The acknowledgements environment puts a large, bold, centered
 % "Acknowledgements" label at the top of the page.
 
 \newenvironment{acknowledgements}{\begin{alwayssingle}
@@ -582,7 +582,7 @@ Thesis Committee Chair
 
 % VITAE
 %
-% The vitae environment puts a large, bold, centered 
+% The vitae environment puts a large, bold, centered
 % "Curriculum Vitae" label at the top of the page.
 
 \newenvironment{vitae}{\begin{alwayssingle}
@@ -624,7 +624,7 @@ Thesis Committee Chair
     \@twosidetrue
     \fi
 \renewcommand{\thepage}{\arabic{page}}\pagenumbering{arabic}\setcounter{page}{1}\pagestyle{headings}}
-%\pagenumbering{arabic} 
+%\pagenumbering{arabic}
 
 
 %    ****************************************
@@ -758,9 +758,9 @@ Thesis Committee Chair
 {\par\ssp\def\@halignto{to#1}\@tabular}
 
 % \smalltabular and \smalltabular* are alternative tabular styles
-% in the \small font.  They are required because single-spacing implies a 
+% in the \small font.  They are required because single-spacing implies a
 % change of font to a particular size.
-% EVM, 7/20/93 
+% EVM, 7/20/93
 \def\smalltabular{\par\smallssp\let\@halignto\@empty\@tabular}
 \def\endsmalltabular{\endtabular}
 \expandafter \def\csname smalltabular*\endcsname #1%
@@ -1127,7 +1127,7 @@ Thesis Committee Chair
 %% \def\@cite#1{[#1]}            % Produces the output of the \cite
 %                                % command.
 %%%%%%%%%%%%%%%%%%%%% Code added so that I could use my .bib file with the IEEE abbreviations
-%%%%%%%%%%%%%%%%%%%%% in it.  Now the references print in IEEE trans format.  
+%%%%%%%%%%%%%%%%%%%%% in it.  Now the references print in IEEE trans format.
 %%%%%%%%%%%%%%%%%%%%% All this code was cut and pasted from the IEEEtran.cls file.  -Niels Hoven, 5/1/2005
 % IEEEtran class scratch pad registers
 % dimen
@@ -1140,10 +1140,10 @@ Thesis Committee Chair
 \newtoks\@IEEEtrantmptoksA
 
 %% CITATION AND BIBLIOGRAPHY COMMANDS
-%% 
+%%
 %% V1.6 no longer supports the older, nonstandard \shortcite and \citename setup stuff
-% 
-% 
+%
+%
 % Modify Latex2e \@citex to separate citations with "], ["
 \def\@citex[#1]#2{%
   \let\@citea\@empty
@@ -1178,7 +1178,7 @@ Thesis Committee Chair
 % in use so that it will not interfere with cite.sty. However, as a result,
 % citation numbers will not be hyperlinked.
 
-\def\NAT@parse{\typeout{IEEEtran error: Attempt to use fake Natbib command 
+\def\NAT@parse{\typeout{IEEEtran error: Attempt to use fake Natbib command
 which is provided to fool Hyperref.}}
 % it easy enough to override via:
 % \let\NAT@parse\undefined
@@ -1197,7 +1197,7 @@ which is provided to fool Hyperref.}}
     \if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi}%
   \@esphack}
 
-% V1.6 provide a way for a user to execute a command just before 
+% V1.6 provide a way for a user to execute a command just before
 % a given reference number - used to insert a \newpage to balance
 % the columns on the last page
 \edef\@IEEEtriggerrefnum{0}   % the default of zero means that
@@ -1239,8 +1239,8 @@ which is provided to fool Hyperref.}}
 % by adding the \interlinepenalty here, we make it more
 % difficult, but not impossible, for LaTeX to break within a reference.
 % IEEE almost never breaks a reference (but they do it more often with
-% technotes). You may get an underfull vbox warning around the bibliography, 
-% but the final result will be much more like what IEEE will publish. 
+% technotes). You may get an underfull vbox warning around the bibliography,
+% but the final result will be much more like what IEEE will publish.
 % MDS 11/2000
 %\if@technote\sloppy\clubpenalty4000\widowpenalty4000\interlinepenalty100%
 %\else
@@ -1338,7 +1338,7 @@ which is provided to fool Hyperref.}}
    \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
     {\rule{\z@}{\footnotesep}\ignorespaces
       #1\strut}}}
- 
+
 %    ****************************************
 %    *         FIGURES AND TABLES           *
 %    ****************************************
@@ -1458,7 +1458,7 @@ which is provided to fool Hyperref.}}
 \advance\hsize by -.5\columnsep
 \parindent=0pt
 \centering
- 
+
 #1}\hskip\columnsep\vtop{\hsize=.5\hsize%
 \advance\hsize by -.5\columnsep
 \parindent=0pt\centering
@@ -1662,7 +1662,7 @@ which is provided to fool Hyperref.}}
 
 %%% To easily plot in draft mode WITH figures on, add "final" to the list of arguments of graphicx
 %%%  In other words, change
-%%%           \usepackage[pdftex]{graphicx} to    
+%%%           \usepackage[pdftex]{graphicx} to
 %%%           \usepackage[pdftex, final]{graphicx}
 \usepackage[pdftex, final]{graphicx}
 

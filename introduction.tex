@@ -24,8 +24,9 @@ I also release all related code for BeaverDam, my video labeling platform, on Gi
 \section*{Related Work}
 \label{sec:related}
 
-There are a large number of static image annotators available, and for most computer vision applications that only require images instead of videos, these simpler alternatives should be used.
-For bounding box annotations, even crowdsourcing sites such as Mechanical Turk or Crowdflower may have templates providing such functionality.
+There are a large number of static image annotators available.
+For most computer vision applications that only require images instead of videos, these simpler alternatives should be used.
+For bounding box annotations, crowdsourcing sites such as Mechanical Turk or Crowdflower may have templates providing such functionality.
 For more complicated labels, tools such as LabelMe~\cite{LabelMe} provide many features for tasks such as image segmentation.
 However, none of these tools provide the ability to easily label every frame of a video.
 
@@ -33,7 +34,13 @@ There exists some public datasets of labeled videos.
 The YouTube-8M dataset~\cite{YouTube-8M} has millions of annotated videos, but they are annotated using the Inception V3 model trained on ImageNet.
 The KITTI dataset~\cite{KITTI}, as well as a dataset being built at Berkeley Deep Drive, have labeled videos.
 But these videos are not labeled every frame, instead an image is sampled every few seconds.
+Those images are then labeled using static image annotators.
+While these types of sampled image datasets are still useful, they don't allow research on supervised learning using nearby frames of a video, such as using an LSTM that uses each frame as input.
 
-Frame-by-frame labeled videos datasets, the type BeaverDam is designed to create, include VIRAT, a dataset created using VATIC~\cite{Vatic}.
-However, due to the difficulty of labeling videos and the lack of good tools to do so, these datasets are rarer and smaller, which is why we created BeaverDam.
+BeaverDam is designed to create frame-by-frame labeled video datasets.
+Such existing datasets include VIRAT, a dataset created using VATIC~\cite{Vatic}.
+However, labeling videos with existing tools is difficult and expensive, so these datasets are rarer and smaller.
+Even setting up the first job is often a week-long project, consuming valuable researcher time.
+Modifying them for each dataset's custom specifications is also difficult.
+We created BeaverDam to address these problems.
 
