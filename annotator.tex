@@ -2,13 +2,13 @@
 \includegraphics[width=15cm]{figs/interface.png}
 \label{interface}
 \centering
-\caption{BeaverDam's expert verification interface with user keyframe scheduling enabled, border buffer disabled. The workers see a similar interface. Note the keyframe scheduling interface integrated with the video player, the single click multiple create interface, and objects being allowed to partially or wholly off-screen in the bottom left corner.}
+\caption{BeaverDam's expert verification interface with user keyframe scheduling enabled, border buffer disabled. Workers see a similar interface. Note the keyframe scheduling interface integrated with the video player, the single click multiple create interface, and objects being allowed to move partially or wholly off-screen in the bottom left corner.}
 \end{figure}
 
 The productivity of annotators is the focus of most of the prior works in this area.
 During the development and deployment of BeaverDam, we've gathered extensive feedback from our turkers and testers.
 We also implemented features suggested by past works such as VATIC,
-and introduce several new ones to address issues found during the testing of VATIC.\footnote{Sceenshots of select issues in this chapter are taken from the demo video on VATIC's website, and are representative of what we encountered.}
+and introduced several new ones to address issues found during the testing of VATIC.\footnote{Sceenshots of select issues in this chapter are taken from the demo video on VATIC's website, and are representative of what we encountered.}
 
 
 \section{Keyframe scheduling}
@@ -22,30 +22,30 @@ While a flexible keyframe schedule could potentially be automated using tracking
 
 We added a keyframe viewer bar that displays all keyframes and keyframes for the currently selected object.
 The user can click on these keyframes to edit them, or insert new keyframes by editing the boxes when on a frame that's not a keyframe.
-We also included keyboard shortcuts to jump between keyframes for experts who need fine grained editing.
+We also included keyboard shortcuts to jump between keyframes for experts who need finely grained editing.
 
 \section{Video playback for maintaining identity}
 
 VATIC's video player was a rudimentary image changer as its purpose was to give workers context when tracking objects.
-As we wanted more flexibility and power for more advanced labelers, we incorporated a full fledged video player instead of using VATIC's system of using JavaScript to advance images of frames.
+As we wanted more flexibility and power for more advanced labelers, we incorporated a full fledged video player over VATIC's usage JavaScript to advance images of frames.
 
 One huge issue we solved with this setup was video loading times.
 When deploying VATIC, we found users complaining about load times, and sometimes jobs would time out before the video loaded, especially when using high resolution images for frames.
-When seeking in the video, the images would flash to white if it's not loaded from cache quickly enough.
-By converting the app to use HTML5 video, we take advantage of its ability to stream, similar to YouTube and other sites can display the video without loading all of it.
+When seeking in the video, the images would flash to white if it's not loaded from cache quickly enough. The interruption causes not only context loss but also frustration.
+By converting the app to use HTML5 video, we take advantage of the ability to stream, similar to how YouTube and other sites can display video without loading all of it first.
 The annotator can then begin annotating as the video loads.
-The playback is also much smoother, with a minor tradeoff of slightly slower rewinds, as videos are encoded in a way optimized for forward playback.
+The playback is also much smoother, with a minor tradeoff of slightly slower rewinds, as videos are encoded in a way optimized for forward playback. # something about studies where VATIC users used forward playback more often than rewinds would be good here
 
 \section{Reducing clicks}
 
-In addition to measuring time it takes for annotators to perform certain actions, we sought to minimize the number of clicks necessary.
+In addition to measuring the time it takes for annotators to perform certain actions, we sought to minimize the number of clicks necessary.
 We find this to be a good rule of thumb when we don't have enough users to properly A/B test design choices.
 
-First, we set the user in create/edit hybrid mode by default.
+First, we set the user in the hybrid create/edit mode by default.
 A new object is created if the user drags in an empty spot, and an existing object is edited otherwise.
 VATIC requires the user to click a ``create'' button, which enables the user to annotate heavily overlapped objects more easily.
 We propose that it's more efficient to force a user to perform the extra steps of creating a box in an empty spot and dragging it onto the object in case of overlap,
-as heavy overlaps turned out to be rare in our datasets, so it was better to optimize for the common case.
+as heavy overlaps turned out to be rare in our datasets, so it was better to optimize for the common case. # Woot its like Huffman, optimize for freq :D
 
 \begin{figure}[h]
 \includegraphics[width=14cm]{figs/vatic_create.png}
@@ -55,13 +55,13 @@ as heavy overlaps turned out to be rare in our datasets, so it was better to opt
 
 Additionally, instead of having the user choose the type of object each time, we default to the most common label (car) or the user's last selection.
 This reduced clicks, but did result in more errors for new users who didn't notice that they must change the label from the default when labeling non-cars.
-While VATIC's prompting each time prevented this, we elected to solve it through a better tutorial to save time for trained annotators.
+While VATIC's prompting each time prevented this, we elected to solve it through a better tutorial to save time for acclimated annotators.
 
 Finally, BeaverDam includes extensive keyboard shortcuts, with the aim of eliminating any need for the mouse aside from drawing and moving boxes.
 Tasks such as label selections and video playback are all controlled through the keyboard.
-We left in optional mouse controls, but it may be a good choice to remove them to enforce keyboard shortcut usage.
+We left in optional mouse controls, but it may be a good choice to remove them to enforce the faster keyboard workflow.
 Surprisingly, we have had turkers report that they were on tablets, and keyboard shortcuts were inefficient for them.
-However, we find in our small sample of annotators that tablet users are few and are less efficient in general.
+However, we find in our small sample of annotators that tablet users are few, and less efficient in general.
 
 \section{Handling frame exit/enters}
 

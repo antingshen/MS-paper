@@ -10,14 +10,14 @@ However, simply by including additional data from VOC12 and COCO, 29.5\% of the 
 As we can see by comparing the drop from RCNN to Faster-RCNN on VOC07 only, and the drop from adding training data to Faster-RCNN, increasing data contributes significantly to error reduction.}
 \end{figure}
 
-Therefore, for real-world application development, data can be cheaper and more effective than scientists.
-While many existing tools support image classification -- it is even built into Amazon Mechanical Turk (MTurk) -- and some tools support bounding box labeling in images, few tools exist for frame-by-frame labeling in videos.
-VATIC~\cite{Vatic} stands out as being one of the best, as not only does it make high quality annotations one of its main goals, but also cost and scalability.
+Therefore, for real-world application development, data can be cheaper and more effective than scientists ("scientists" feels like wrong term, "research"?).
+While many existing tools support image classification -- like Amazon Mechanical Turk (MTurk) -- and some tools support bounding box labeling in images, few tools exist for frame-by-frame labeling in videos.
+VATIC~\cite{Vatic} stands out as being one of the best, as it not only makes high quality annotations one of its main goals, but also cost and scalability.
 
-My work borrows and improves upon many concepts and results from VATIC's user studies, but I focus on an additional goal that is extremely important in creating datasets for real applications. That goal is researcher happiness.
+My work borrows and improves upon many concepts and results from VATIC's user studies, but I focus on an additional goal that is extremely important in creating datasets for real applications. That goal is researcher happiness. (cute)
 Although VATIC extensively tested its ``User Interfaces'', I argue in chapter~\ref{chap:experimenter} that both the annotators and the experimenters are users, and the interfaces should be smooth for both when creating a tool.
 
-Then, in chapter~\ref{chap:annotator}, I discuss my take on VATIC's User Interface principles for the annotator, and improvements upon them.
+In chapter~\ref{chap:annotator}, I discuss my take on VATIC's User Interface principles for the annotator, and improvements upon them.
 
 I also release all related code for BeaverDam, my video labeling platform, on Github.\footnote{http://github.com/antingshen/beaverdam} At time of writing, the library has been used by Berkeley Deep Drive, DeepScale, and BMW.
 
