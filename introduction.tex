@@ -1,4 +1,5 @@
-Deep learning applications in recent years have come to require rapidly growing amounts of labeled training data.
+Deep learning has been enabling a variety of computer vision applications from object detection on roads~\cite{road-obj-detection} to identify logos~\cite{logos}.
+But these applications often require rapidly growing amounts of labeled training data.
 Often, accuracies can be boosted by adding data as much as by spending years on algorithmic development.
 For example, on the VOC07 benchmark, Faster-RCNN~\cite{FasterRCNN} with VGG-16 was able to eliminate 27.5\% of errors in the much older R-CNN~\cite{RCNN} backed by an equally old neural network architecture (mAP improved from 58.5 to 69.9).
 However, simply by including additional data from VOC12 and COCO, 29.5\% of the remaining error was eliminated (mAP improved from 69.9 to 78.8).
@@ -10,7 +11,7 @@ However, simply by including additional data from VOC12 and COCO, 29.5\% of the 
 As we can see by comparing the drop from RCNN to Faster-RCNN on VOC07 only, and the drop from adding training data to Faster-RCNN, increasing data contributes significantly to error reduction.}
 \end{figure}
 
-Therefore, for real-world application development, data can be cheaper and more effective than scientists.
+Therefore, for real-world application development, data can be cheaper and more effective than scientists, especially as new tools such as FireCaffe~\cite{firecaffe} allow researchers rapidly train on huge datasets.
 While many existing tools support image classification -- it is even built into Amazon Mechanical Turk (MTurk) -- and some tools support bounding box labeling in images, few tools exist for frame-by-frame labeling in videos.
 VATIC~\cite{Vatic} stands out as being one of the best, as not only does it make high quality annotations one of its main goals, but also cost and scalability.
 
