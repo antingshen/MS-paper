@@ -1,9 +1,8 @@
-We have presented numerous improvements to existing video annotation tools.
-We first argued that optimizing for researcher time is as important, if not more important than optimizing for worker efficiency, and showed our contributions in that area.
-Then we demonstrated several ideas that allow for easier annotation by the workers that we discovered in our experiments.
-We showed how BeaverDam enables cheaper annotations to create large datasets that improve model accuracies in production.
-
-As BeaverDam is designed to be extensible, we hope that the platform will adapt to new types of annotations.
-BeaverDam's modular designs shine best when new types of data, such as point clouds from LIDAR, require human labeling in the future.
-
-
+We have presented numerous improvements to existing video annotation tools~\cite{Vatic}.
+We first argued that optimizing for researcher time is as important, if not more important than optimizing for worker efficiency.
+In this area, we identified several pain points of tools such as VATIC, including lack of modularization, extensibility, and ease of installation \& use.
+We improved on each of these areas as well as others such as application security and speedy video distribution, all with scalable real world deployment in mind.
+The way BeaverDam is engineered allows for new types of annotations and data, such as point clouds from LIDAR, to be labeled in the future with few changes.
+Aside from these software product \& implementation improvements, we demonstrated several ideas discovered in our experiments that allow for easier annotation by the workers.
+We improve the keyframe scheduling interface, drastically reduced video loading times (especially for workers with slow connections), reduced clicking required by 20-40\%, reduced time necessary to label videos using smarter defaults and keyboard shortcuts, and improved the handling for occluded objects and objects that are partially in frame.
+These improvements in BeaverDam enables cheaper annotations to create larger datasets to improve model accuracies in production.

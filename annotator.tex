@@ -2,14 +2,17 @@
 \includegraphics[width=15cm]{figs/interface.png}
 \label{interface}
 \centering
-\caption{BeaverDam's expert verification interface with user keyframe scheduling enabled, border buffer disabled. Workers see a similar interface. Note the keyframe scheduling interface integrated with the video player, the single click multiple create interface, and objects being allowed to move partially or wholly off-screen in the bottom left corner.}
+\caption{BeaverDam's expert verification interface with user keyframe scheduling enabled, border buffer disabled. Workers see a similar interface. Note the keyframe scheduling interface integrated with the video player, the single-click multiple-create interface, and objects being allowed to move partially or wholly off-screen in the bottom left corner.}
 \end{figure}
 
 The productivity of annotators is the focus of most of the prior works in this area.
-During the development and deployment of BeaverDam, we've gathered extensive feedback from our turkers and testers.
+During the development and deployment of BeaverDam, we've gathered extensive feedback from our turkers and testers,
+who reported several pain points they found for us to improve, as well as features that they enjoyed.
 We also implemented features suggested by past works such as VATIC,
 and introduced several new ones to address issues found during the testing of VATIC.\footnote{Sceenshots of select issues in this chapter are taken from the demo video on VATIC's website, and are representative of what we encountered.}
 
+Previously, annotating a 10 second video with many objects or objects moving off-frame would take 15-25 minutes with an expert annotator.
+While a precise quantification of our improvement would require more comprehensive user studies, we estimate that BeaverDam is 30\%-50\% more efficient for workers than VATIC on videos in our datasets (driving videos with mostly cars often moving in and out of frame).
 
 \section{Keyframe scheduling}
 
@@ -65,9 +68,12 @@ We left in optional mouse controls, but it may be a good choice to remove them t
 Surprisingly, we have had turkers report that they were on tablets, and keyboard shortcuts were inefficient for them.
 However, we find in our small sample of annotators that tablet users are few, and less efficient in general.
 
+In a typical 15 second video with 30 cars and 5 keyframes each, using each tool's recommended method, BeaverDam requires 270 click-and-drags. VATIC requires 270 clicks, and 240 click-and-drags. We find that click-and-drags take about twice as long to execute as clicks (workers must aim the start and the end of the drag), so these improvements alone make for a 28\% reduction in estimated time spent performing clicks, in the average case of a dashcam video with many cars.
+
 \section{Handling frame exit/enters}
 
-During our user tests, we found that users have the most difficulty when objects are entering or exiting the frame, as it's difficult for linear interpolation to handle a box whose size is increasing but one edge is fixed to the edge of the frame.
+During our user tests, we found that users have the most difficulty when objects are entering or exiting the frame.
+Not only is it difficult for linear interpolation to handle a box whose size is increasing but one edge is fixed to the edge of the frame, but workers also struggle to extend the edge of the box to exactly the edge of the frame.
 
 \begin{figure}[h]
 \includegraphics[width=14cm]{figs/vatic_border.png}

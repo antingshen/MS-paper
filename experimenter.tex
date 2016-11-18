@@ -3,6 +3,7 @@ During our investigation, we had many frustrating experiences with existing rese
 These included installation issues, configuration issues, and dealing with unintuitive and undocumented interfaces.
 For example, there are dozens of open issues without solutions on the VATIC GitHub,
 and its installation script fails at multiple points on a brand new Ubuntu box.
+No job management interface exists, and turkers are managed through a poorly documented command-line interface.
 Due to preciousness of researcher time,
 we believe the ability for researchers to test and iterate quickly is just as important as worker speeds when it comes to video annotation.
 Therefore we have placed improving the experimenter's experience as one of the main goals of this work.
@@ -106,4 +107,8 @@ We also implemented other critical security features, such as TLS, HSTS, CSRF pr
 These features are automatically installed and activated by our setup script,
 with the user only needing to provide TLS certificates for their domain. \footnote{We recommend \textbf{letsencrypt} for easy and free TLS certificates.}
 
+\section{Summary}
+In this chapter, we identified several pain points of tools such as VATIC, including lack of modularization, extensibility, and ease of installation \& use.
+We improved on each of these areas as well as others such as application security and speedy video distribution, all with scalable real world deployment in mind.
+Next, we will look at the design of the annotation tool itself, and present our contributions that improve worker productivity.
 
